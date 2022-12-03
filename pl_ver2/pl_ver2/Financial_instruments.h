@@ -56,7 +56,7 @@ class apple_stock : public stock {
 private:
 	double increase_rate;
 	int volume;
-	double volume_average = 332177847.2;
+	static double volume_average;
 public:
 	apple_stock();
 	apple_stock(string stock_date, double open, double high, double low, double close, double adj_close, int volume, double increase_rate);
@@ -66,6 +66,24 @@ public:
 	int what_stock_itis();
 	void set_increase_rate(double increase_rate);
 	bool compare_average_volume();
+
+};
+
+class tesla_stock : public stock {
+	double increase_rate;
+	int volume;
+	static double volume_average;
+
+public:
+	tesla_stock();
+	tesla_stock(string stock_date, double open, double high, double low, double close, double adj_close, int volume, double increase_rate);
+	double get_open();
+	double get_volume();
+	void print_info();
+	int what_stock_itis();
+	void set_increase_rate(double increase_rate);
+	bool compare_average_volume();
+
 
 };
 
@@ -82,15 +100,12 @@ public:
 
 
 
-/*
-class tesla_stock : public stock {
-	double increase_rate;
-	double volume;
-	double volume_average = 4270740.898;
-};
 
+
+
+
+/*
 class coin : public Financial_instruments {
 private:
 
-};
-*/
+};*/

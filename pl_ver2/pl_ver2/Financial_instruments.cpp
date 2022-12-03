@@ -86,7 +86,7 @@ double samsung_stock::get_volume() {
 }
 
 void samsung_stock::print_info() {
-	cout << "Samsung_stock's" << endl;
+	cout << "Samsung_stock's";
 }
 int samsung_stock::what_stock_itis() {
 	return 1;
@@ -105,6 +105,8 @@ bool samsung_stock::compare_average_volume() {
 	}
 	return result;
 }
+
+double apple_stock::volume_average = 332177847.2;
 
 apple_stock::apple_stock() {
 
@@ -129,7 +131,7 @@ double apple_stock::get_volume() {
 }
 
 void apple_stock::print_info() {
-	cout << "Apple_stock's" << endl;
+	cout << "Apple_stock's";
 }
 
 int apple_stock::what_stock_itis() {
@@ -150,7 +152,51 @@ bool apple_stock::compare_average_volume() {
 	return result;
 }
 
+double tesla_stock::volume_average = 4270740.898;
 
+tesla_stock::tesla_stock() {
+
+	this->volume = 0;
+}
+tesla_stock::tesla_stock(string stock_date, double open, double high, double low, double close, double adj_close, int volume, double increase_rate = 0) {
+	this->stock_date = stock_date;
+	this->open = open;
+	this->high = high;
+	this->low = low;
+	this->close = close;
+	this->adj_close = adj_close;
+	this->volume = volume;
+	this->increase_rate = increase_rate;
+}
+
+double tesla_stock::get_open() {
+	return this->open;
+}
+double tesla_stock::get_volume() {
+	return this->volume;
+}
+
+void tesla_stock::print_info() {
+	cout << "Tesla_stock's";
+}
+
+int tesla_stock::what_stock_itis() {
+	return 3;
+}
+
+void tesla_stock::set_increase_rate(double increase_rate) {
+	this->increase_rate = increase_rate;
+}
+bool tesla_stock::compare_average_volume() {
+	bool result;
+	if (this->volume >= tesla_stock::volume_average) {
+		result = 1;
+	}
+	else {
+		result = 0;
+	}
+	return result;
+}
 
 
 
@@ -170,11 +216,11 @@ double group_stock::RSI(int index) {
 
 	double RSI = 0;
 	if (index < 7) {
-		cout << "wrong index. Please enter >= 7";
+		cout << "wrong index. Please enter >= 7" << endl;
 		return RSI;
 	}
 	if (A.at(index - 1)->what_stock_itis() != A.at(index - 6)->what_stock_itis()) {
-		cout << "wrong index. You compare different stock.";
+		cout << "wrong index. You compare different stock." << endl;
 		return RSI;
 	}
 	//A.at(index - 1)->print_info();
